@@ -82,23 +82,32 @@ X = [ones(m, 1) X];
 fprintf('Running gradient descent ...\n');
 
 % Choose some alpha value
-alpha = 0.01;
-num_iters = 400;
+alpha = [0.001 0.003 0.01 0.03 0.1 0.3 1];
 
+num_iters = 1000;
+J = ones(num_iters, length(alpha));
+theta = zeros(3, length(alpha));
 % Init Theta and Run Gradient Descent 
-theta = zeros(3, 1);
-[theta, J_history] = gradientDescentMulti(X, y, theta, alpha, num_iters);
-
-% Plot the convergence graph
 figure;
-plot(1:numel(J_history), J_history, '-b', 'LineWidth', 2);
-xlabel('Number of iterations');
-ylabel('Cost J');
+for i = 1:length(alpha)
+    [theta(:,i), J(:,i)] = gradientDescentMulti(X,y,theta(:,i),alpha(i), num_iters);
+    plot(1:numel(J(:,i)), J(:,i), 'LineWidth',2);
+    hold on;
+    fprintf('Theta computed from gradient descent: \n');
+    fprintf(' %f \n', theta(:,i));
+    fprintf('\n');
+end
+legend("0,001","0.003","0.01","0.03","0.1","0.3","1");
+xlabel("Number of Iterations");
+ylabel("Cost J");
+% Plot the convergence graph
+% figure;
+% plot(1:numel(J_history), J_history, '-b', 'LineWidth', 2);
+% xlabel('Number of iterations');
+% ylabel('Cost J');
 
 % Display gradient descent's result
-fprintf('Theta computed from gradient descent: \n');
-fprintf(' %f \n', theta);
-fprintf('\n');
+
 
 % Estimate the price of a 1650 sq-ft, 3 br house
 % ====================== YOUR CODE HERE ======================
