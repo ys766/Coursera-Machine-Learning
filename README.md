@@ -6,3 +6,5 @@
 
 ---
 1. Linear Regression (Univariate and Multivariate)
+---
+2. Logistic Regression
