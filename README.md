@@ -8,3 +8,5 @@
 1. Linear Regression (Univariate and Multivariate)
 ---
 2. Logistic Regression
+---
+3. Multi-Class Classification and Neural Networks (Forward Propagation with Given Learned Weight Parameters)
