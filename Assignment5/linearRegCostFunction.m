@@ -19,8 +19,12 @@ grad = zeros(size(theta));
 %               You should set J to the cost and grad to the gradient.
 %
 
+% X already has the bias term added in the first column
+diff = X * theta - y;
 
+J = diff.'*diff/2/m+lambda/2/m*((theta.'*theta)-theta(1)^2);
 
+grad = X.'*diff/m+lambda/m*[0;theta(2:end)];
 
 
 

@@ -52,7 +52,13 @@ error_val   = zeros(m, 1);
 %
 
 % ---------------------- Sample Solution ----------------------
-
+for i = 1:m
+    theta = trainLinearReg(X(1:i,:),y(1:i),lambda);
+    diff_tr = X(1:i,:)*theta-y(1:i);
+    diff_val = Xval*theta-yval;
+    error_train(i) = diff_tr.'*diff_tr/2/i;
+    error_val(i) = diff_val.'*diff_val/2/size(Xval,1);
+end
 
 
 
