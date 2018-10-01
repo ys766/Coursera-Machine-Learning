@@ -62,17 +62,22 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 a1 = [ones(m,1) X];
-a2 = [ones(1, m); sigmoid(Theta1*a1.')];
-output = sigmoid(Theta2*a2);
+z2 = Theta1 * a1.';
+a2 = [ones(1, m); sigmoid(z2)];
+z3 = Theta2*a2;
+a3 = sigmoid(z3);
 
 for i = 1:m
     
     % trYi is a zero-or-one 1*num_labels vector
     trYi = zeros(1,num_labels);
     trYi(y(i)) = 1;
-    hi = output(:,i);
+    hi = a3(:,i);
     J = J-trYi*log(hi)-(1-trYi)*(log(1-hi));
-    
+    del_3 = a3(:,i) - trYi.';
+    del_2 = (Theta2(:,2:end).'*del_3).*sigmoidGradient(z2(:,i));
+    Theta2_grad = Theta2_grad + del_3*(a2(:,i).');
+    Theta1_grad = Theta1_grad + del_2*(a1(i,:));
 end
 
 J = J/m;
@@ -81,10 +86,13 @@ J = J/m;
 J = J + (sum((Theta1(:,2:end)).^2,'all') +...
     sum((Theta2(:,2:end)).^2,'all'))*lambda/2/m;
 
+Theta1_grad = Theta1_grad/m;
+Theta2_grad = Theta2_grad/m;
 
+% Add regularized term for the gradient matrix
 
-
-
+Theta1_grad = Theta1_grad + lambda/m*([zeros(hidden_layer_size,1) Theta1(:,2:end)]);
+Theta2_grad = Theta2_grad + lambda/m*([zeros(num_labels,1) Theta2(:,2:end)]);
 
 
 
