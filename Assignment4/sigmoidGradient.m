@@ -13,9 +13,9 @@ g = zeros(size(z));
 %               each value of z (z can be a matrix, vector or scalar).
 
 
+sig = 1 ./ (1 + exp(-z));
 
-
-
+g = sig .* (1 - sig);
 
 
 

@@ -65,14 +65,21 @@ a1 = [ones(m,1) X];
 a2 = [ones(1, m); sigmoid(Theta1*a1.')];
 output = sigmoid(Theta2*a2);
 
-% loop through the training examples
-for i=1:m
-    y_tr = zeros(num_labels, 1);
-    y_tr(y(i))=1;
-    a
+for i = 1:m
+    
+    % trYi is a zero-or-one 1*num_labels vector
+    trYi = zeros(1,num_labels);
+    trYi(y(i)) = 1;
+    hi = output(:,i);
+    J = J-trYi*log(hi)-(1-trYi)*(log(1-hi));
     
 end
 
+J = J/m;
+
+% add regularization cost
+J = J + (sum((Theta1(:,2:end)).^2,'all') +...
+    sum((Theta2(:,2:end)).^2,'all'))*lambda/2/m;
 
 
 
