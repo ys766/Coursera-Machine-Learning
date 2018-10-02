@@ -225,3 +225,26 @@ theta = trainLinearReg(X_poly, y,lambda);
 diff_tst = X_poly_test*theta - ytest;
 error_tst = diff_tst.'*diff_tst/2/size(X_poly_test,1);
 fprintf("Test error for lambda=3 is: %f", error_tst);
+
+%% =============Part 10: Error curve vs. number of randomly selected examples=======
+mTr = size(X_poly,1);
+mVal = size(X_poly_val,1);
+lambda = 0.01;
+num = [2,4,6,8,10,12,14];
+error_train = zeros(length(num),1);
+error_val = zeros(length(num),1);
+for i = 1:length(num)
+    ind_Tr = randperm(mTr,num(i));
+    ind_Val = randperm(mVal, num(i));
+    X_tr = X_poly(ind_Tr);
+    y_tr = y(ind_Tr);
+    X_Validation = X_poly_val(ind_Val);
+    y_Validation = yval(ind_Val);
+    theta = trainLinearReg(X_tr,y_tr, lambda);
+    diff_tr = X_tr*theta-y_tr;
+    diff_val = X_Validation*theta-y_Validation;
+    error_train(i)=diff_tr.'*diff_tr/2/num
+end
+
+figure;
+plot(lambda, )
