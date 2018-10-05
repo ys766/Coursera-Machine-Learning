@@ -5,11 +5,11 @@
 ### The following list contains the names of the programming assignments
 
 ---
-1. [Linear Regression (Univariate and Multivariate)](https://github.coecis.cornell.edu/ys766/Coursera-Machine-Learning/tree/master/Assignment1)
+1. [Linear Regression (Univariate and Multivariate)](https://github.com/ys766/Coursera-Machine-Learning/tree/master/Assignment1)
 ---
-2. [Logistic Regression](https://github.coecis.cornell.edu/ys766/Coursera-Machine-Learning/tree/master/Assignment2)
+2. [Logistic Regression](https://github.com/ys766/Coursera-Machine-Learning/tree/master/Assignment2)
 ---
-3. [Multi-Class Classification and Neural Networks](https://github.coecis.cornell.edu/ys766/Coursera-Machine-Learning/tree/master/Assignment3) (Forward propagation with given weight matrix)
+3. [Multi-Class Classification and Neural Networks](https://github.com/ys766/Coursera-Machine-Learning/tree/master/Assignment3) (Forward propagation with given weight matrix)
 ---
 4. [Neural Networks Learning](https://github.com/ys766/Coursera-Machine-Learning/tree/master/Assignment4)
 ---
