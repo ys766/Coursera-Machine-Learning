@@ -97,9 +97,10 @@ for i = 1:length(alpha)
     fprintf(' %f \n', theta(:,i));
     fprintf('\n');
 end
-legend("0,001","0.003","0.01","0.03","0.1","0.3","1");
+legend("0.001","0.003","0.01","0.03","0.1","0.3","1");
 xlabel("Number of Iterations");
 ylabel("Cost J");
+title("Learning Curve for Different Learning Rates")
 % Plot the convergence graph
 % figure;
 % plot(1:numel(J_history), J_history, '-b', 'LineWidth', 2);
