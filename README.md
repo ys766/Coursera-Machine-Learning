@@ -19,3 +19,4 @@
 ---
 7. [K-Means Clustering and Principal Component Analysis](https://github.com/ys766/Coursera-Machine-Learning/tree/master/Assignment7)
 ---
+8. [Anomaly Detection and Recommender Systems](https://github.com/ys766/Coursera-Machine-Learning/tree/master/Assignment8)
