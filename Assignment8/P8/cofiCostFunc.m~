@@ -42,22 +42,19 @@ Theta_grad = zeros(size(Theta));
 
 predictions = X*(Theta');
 diff = (Y - predictions).*R;
-J = 1/2*sum(sum(diff.^2))+lambda/2*(sum(sum(X.^2))+sum(sum(Theta.^2)));
+J = 1/2*sum(sum(diff.^2));
 
 % Loop through the movies to obtain the gradient
 for i = 1:num_movies
     user_index = find(R(i,:)==1);
     Theta_temp = Theta(user_index,:);
     Y_temp = Y(i,user_index);
-    X_grad(i,:)=(X(i,:)*Theta_temp'-Y_temp)*Theta_temp+lambda*X(i,:);
+    X_grad(i,:)=(X(i,:)*Theta_temp'-Y_temp)*Theta_temp;
 end
 
 % Loop through the users to obtain the gradient
 for j = 1:num_users
-    movie_index = find(R(:,j)==1);
-    X_temp = X(movie_index,:);
-    Y_temp = Y(movie_index,j);
-    Theta_grad(j,:)=(Theta(j,:)*X_temp'-Y_temp')*X_temp+lambda*Theta(j,:);
+    movie_index = find(R())
 end
 
 
